@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    {{ block.super }} - {{ username }}'s results page
+{% endblock %}
+
+{% block content %}
+<div class="content">
+    <div class="container my-5">
+        <div class="row">
+            <div class="back-link mb-0">
+                <a href="{% url 'profile' %}">&lt;&lt;Back</a>
+            </div>
+            <div class="w-100 text-center mb-3">
+                <h2>Results</h2>
+            </div>
+        </div>
+
+        {% if results %}
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Quiz</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Correct answers</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for res in results %}
+                        <tr>
+                            <th scope="row">{{ forloop.counter }}</th>
+                            <td><a href="{% url 'quiz_page' res.quiz.id %}">{{ res.quiz.title }}</a></td>
+                            <td>{{ res.date|date:"d.m.Y" }}</td>
+                            <td>{{ res.correct_answers }}/{{ res.quiz.question_set.all.count }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <div class="row w-100 justify-content-center">
+                <p class="card-quiz-text">Empty :-(</p>
+            </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

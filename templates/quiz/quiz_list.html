@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load quiz_tags %}
+
+{% block title %}
+    {{ block.super }} - Quiz list
+{% endblock %}
+
+{% block content %}
+<div class="content">
+    <div class="container">
+        <div class="popular-block">
+            <div class="row d-flex justify-content-between align-items-center px-2">
+                <h2>Popular quizes:</h2>
+                <button class="btn btn-light hide-button" type="button" id="hide_btn" to="popular_bl" name="button">Hide</button>
+            </div>
+            <div class="row align-items-stretch mt-4" id="popular_bl">
+                {% get_popular_block request %}
+            </div>
+        </div>
+        <div class="all-block mt-5">
+            <h2>All quizes:</h2>
+            <form class="w-100 my-4" id="search_form">
+                <div class="form-group">
+                    <input type="text" class="form-control" id="search_input" placeholder="Search">
+                </div>
+            </form>
+            <div class="row d-flex" id="all_bl">
+            {% get_all_block request %}
+            </div>
+            <div class="row justify-content-center mb-4 mt-2 show-more-button">
+                <button class="btn buttons" type="button" name="button" id="show_more" next_pg="2">Show more</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,107 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    {{ block.super }} - Homepage
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row col-12">
+            <div class="row p">
+                <div class="col-lg-8 col-md-12 l">
+                    <div class="row inner-text p-3">
+                        <h1 class="header-text">Want to learn something new?<br> Try it for free with our QuizzApp!</h1>
+                        <p class="lead mt-4 header-desc">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam libero sit quis obcaecati unde expedita nulla, laboriosam facilis aut dolores voluptas eveniet quia impedit veniam molestiae nobis, in aspernatur beatae aliquid neque ex ea, asperiores. Neque earum ipsam veritatis quam sequi cum, iusto voluptates, reiciendis quasi eaque delectus inventore repellat consequuntur quae.</p>
+                    </div>
+                    <div class="row inner-buttons p-3">
+                        <a class="mx-auto btn btn-lg buttons" href="{% url 'login' %}">Try it</a>
+                        <a class="mx-auto btn btn-lg buttons" href="{% url 'faq' %}">F.A.Q</a>
+                    </div>
+                </div>
+                <div class="col-lg-4 d-none d-lg-block">
+                    <div class="inner-image d-flex justify-content-center p-2">
+                        <img class="img-fluid mt-5" src="{% static 'img/quiz_img.jpg' %}" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container mt-5">
+        <h2 class="text-center header-text mb-5">quiZZed is perfect for:</h2>
+        <div class="row">
+            <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">
+                            <i class="material-icons md-36 text-center">laptop</i>
+                            <p>Bloggers</p>
+                        </h5>
+                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium voluptatibus asperiores minus, corporis. At blanditiis impedit placeat soluta repudiandae. Arcsitecto perferendis et, consectetur error.</p>
+                        <a href="#" class="card-link">Learn more</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">
+                            <i class="material-icons md-36 text-center">import_export</i>
+                            <p>Brand Communications</p>
+                        </h5>
+                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum maxime minima reiciendis iure voluptate molestiae dicta beatae neque pariatur vel, eius laboriosam modi vero, quam possimus ratione quos nisi quod tempore hic sint perferendis.</p>
+                        <a href="#" class="card-link">Learn more</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">
+                            <i class="material-icons-outlined md-36 text-center">emoji_events</i>
+                            <p>Sport & events</p>
+                        </h5>
+                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi ex velit itaque aspernatur ab harum non quis perspiciatis hic ea ipsam tempore dolor, vel repudiandae quae. Debitis corrupti ullam quas deleniti quos accusantium facilis! Deleniti fugiat, adipisci ratione itaque.</p>
+                        <a href="#" class="card-link">Learn more</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">
+                            <i class="material-icons md-36 text-center">corporate_fare</i>
+                            <p>Corporate training</p>
+                        </h5>
+                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsum obcaecati rerum odit aspernatur, nam molestiae nesciunt laborum libero fugiat perferendis maiores magnam!</p>
+                        <a href="#" class="card-link">Learn more</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">
+                            <i class="material-icons-outlined md-36 text-center">record_voice_over</i>
+                            <p>Public speakers</p>
+                        </h5>
+                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas rem quod, illum iste nulla dolorem libero non obcaecati beatae recusandae, ipsa.</p>
+                        <a href="#" class="card-link">Learn more</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12 mb-4">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">
+                            <i class="material-icons-outlined md-36 text-center">school</i>
+                            <p>Edutainment</p>
+                        </h5>
+                        <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Earum beatae minima blanditiis vitae, eos numquam nesciunt voluptas architecto quo vel quod quam nobis ipsum sequi odit cupiditate officia iste corporis libero officiis v</p>
+                        <a href="#" class="card-link">Learn more</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    {{ block.super }} - Quiz page
+{% endblock %}
+
+{% block content %}
+<div class="content">
+    <div class="container my-5">
+            <div class="row mt-3 mb-5 justify-content-center">
+                <h2>Quiz result</h2>
+            </div>
+
+            <div class="row pb-4 bot-delim">
+                <div class="col">
+                    <p class="row-name">Quiz name:</p>
+                </div>
+                <div class="col">
+                    <p class="float-right text-justify row-content">{{ result.quiz.title }}</p>
+                </div>
+                <div class="w-100 mb-3"></div>
+                <div class="col">
+                    <p class="row-name">Date:</p>
+                </div>
+                <div class="col">
+                    <p class="float-right row-content">{{ result.date|date:"d.m.Y" }}</p>
+                </div>
+                <div class="w-100 mb-3"></div>
+                <div class="col">
+                    <p class="row-name">Correct answers:</p>
+                </div>
+                <div class="col">
+                    <p class="float-right row-content">{{ result.correct_answers }}</p>
+                </div>
+                <div class="w-100 mb-3"></div>
+                <div class="col">
+                    <p class="row-name">Rating:</p>
+                </div>
+                <div class="col">
+                    <p class="float-right row-content">{{ result.correct_answers }}/{{ result.quiz.question_set.all.count }}</p>
+                </div>
+            </div>
+            <div class="row justify-content-center my-3 py-3">
+                <a class="btn btn-lg buttons" href="{% url 'quiz_list' %}">Home</a>
+            </div>
+    </div>
+</div>
+{% endblock %}

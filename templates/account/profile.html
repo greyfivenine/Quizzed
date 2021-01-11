@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load quiz_tags %}
+
+{% block title %}
+    {{ block.super }} - {{ request.user.username }}'s Profile
+{% endblock %}
+
+{% block content %}
+    <div class="content">
+        <div class="container my-2">
+            {% if success %}
+                <div class="alert alert-success text-center" role="alert" id="profile_success">
+                    {{ success }}
+                </div>
+            {% endif %}
+            <div class="profile">
+                <div class="row profile_info">
+                    <div class="col-lg-4 left">
+                        <div class="white-bg p-3">
+                            <div class="text-center">
+                                <img class="rounded-circle img-fluid profile-pic" src="{{ MEDIA_URL }}{{ request.user.userprofile.picture }}" alt="">
+                            </div>
+                            <form class="profile_form" action="." method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <input class="profile-image-input" type="file" name="new_img" value="" style="display: none;">
+                            </form>
+                            <div class="row justify-content-center">
+                                <a class="btn buttons profile-btn my-2 mx-auto" id="changeImg">Change image</a>
+                                <a class="btn buttons profile-btn my-2" id="changePwd" href="{% url 'change_pwd' %}">Change password</a>
+                                <a class="btn buttons profile-btn my-2" id="changeEmail" href="{% url 'change_email' %}">Change email</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-8 right">
+                        <div class="white-bg p-3">
+                            <h2 class="text-center my-3">Profile:</h2>
+                            <div class="row">
+                                <div class="col">
+                                    <p class="row-name">Username:</p>
+                                </div>
+                                <div class="col">
+                                    <p class="float-right row-content">{{ request.user.username }}</p>
+                                </div>
+
+                                <div class="w-100 mb-2"></div>
+
+                                <div class="col">
+                                    <p class="row-name">Email address:</p>
+                                </div>
+                                <div class="col">
+                                    <p class="float-right row-content">{{ request.user.email }}</p>
+                                </div>
+
+                                <div class="w-100 mb-2"></div>
+
+                                <div class="col">
+                                    <p class="row-name">Quiz finished:</p>
+                                </div>
+                                <div class="col">
+                                    <p class="float-right row-content">{{ request.user.result_set.all.count }}</p>
+                                </div>
+
+                                <div class="w-100 mb-2"></div>
+
+                                <div class="col">
+                                    <p class="row-name">Your rating:</p>
+                                </div>
+                                <div class="col">
+                                    <p class="float-right row-content">{{ rating }}&nbsp%</p>
+                                </div>
+                                <div class="w-100 mb-2"></div>
+                                <div class="col d-flex justify-content-center">
+                                    <a class="btn buttons" href="{% url 'results' request.user.username %}">Your results</a>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="popular-block mt-3">
+                <div class="row d-flex justify-content-between align-items-center px-2">
+                    <h2>Your most popular quizes:</h2>
+                    <button class="btn btn-light hide-button" type="button" id="hide_btn" to="popular_bl" name="button">Hide</button>
+                </div>
+                <div class="row mt-4" id="popular_bl">
+                    {% get_popular_block request True %}
+                </div>
+            </div>
+            <div class="search-block mt-5">
+                <h2>All your quizes:</h2>
+                {% if flag %}
+                    <form class="w-100 my-4">
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="searchInput" placeholder="Search">
+                        </div>
+                    </form>
+                    <div class="row d-flex" id="all_bl">
+                        {% get_all_block request True %}
+                    </div>
+                    <div class="row justify-content-center mb-4 mt-2 show-more-button">
+                        <button class="btn buttons" type="button" name="button" id="show_more" next_pg="2">Show more</button>
+                    </div>
+                {% else %}
+                    <div class="row w-100 justify-content-center">
+                        <p class="card-quiz-text">Empty :-(</p>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

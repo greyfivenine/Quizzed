@@ -1,0 +1,166 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    {{ block.super }} - Add Quiz
+{% endblock %}
+
+{% block content %}
+<div class="content">
+    <div class="container my-5">
+        <form action="." id="post_form" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="row justify-content-center">
+                <div class="img-wrapper" id="img_wrapper">
+                    <img class="img-fluid quiz-logo" src="{% static 'img/q.jpeg' %}" id="quiz_img" alt="">
+                    <div class="img-desc d-flex align-items-center justify-content-center">
+                        <p class="img-tooltip">Click to upload quiz image</p>
+                    </div>
+                </div>
+                <input class="form-control image-input" type="file" name="quiz_logo" value="">
+                <input class="d-none" type="text" name="json_data" value="">
+            </div>
+        </form>
+            <div class="row my-3 justify-content-center ">
+                <input type="text" class="form-control my-3" placeholder="Enter quiz title:" id="quiz_title">
+                <textarea class="form-control" name="txt_area" rows="4" cols="60" placeholder="Enter quiz description:" id="quiz_desc"></textarea>
+            </div>
+            <div class="row questions-add-block justify-content-center">
+                <div class="d-none">
+                    <div id="q_example" class="question-add mt-3">
+                        <h3 class="text-center mb-3">#1 Question:</h3>
+                        <div class="answer-area">
+                            <div class="row a_area">
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text w45" id="q_addon">Q</span>
+                                    </div>
+                                    <input type="text" class="form-control" placeholder="Enter your question:" name="quest" aria-describedby="q_addon">
+                                </div>
+
+                                <div class="input-group mb-1" id="a_example">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text prep">A1</span>
+                                    </div>
+                                    <input type="text" class="form-control" placeholder="Enter answer:" name="answ" aria-describedby="a1_addon">
+                                    <div class="input-group-append p-2 align-items-center">
+                                        <input class="m-0" type="checkbox" name="corr" value="" title="Correct?">
+                                    </div>
+                                </div>
+                                <div class="input-group mb-1">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text prep">A2</span>
+                                    </div>
+                                    <input type="text" class="form-control" placeholder="Enter answer:" name="answ" aria-describedby="a2_addon">
+                                    <div class="input-group-append p-2 align-items-center">
+                                        <input class="m-0" type="checkbox" name="corr" value="" title="Correct?">
+                                    </div>
+                                </div>
+                                <div class="input-group mb-1">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text prep">A3</span>
+                                    </div>
+                                    <input type="text" class="form-control" placeholder="Enter answer:" name="answ" aria-describedby="a3_addon">
+                                    <div class="input-group-append p-2 align-items-center">
+                                        <input class="m-0" type="checkbox" name="corr" value="" title="Correct?">
+                                    </div>
+                                </div>
+                                <div class="input-group mb-1">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text prep">A4</span>
+                                    </div>
+                                    <input type="text" class="form-control" placeholder="Enter answer:" name="answ" aria-describedby="a4_addon">
+                                    <div class="input-group-append p-2 align-items-center">
+                                        <input class="m-0" type="checkbox" name="corr" value="" title="Correct?">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="mt-3 d-flex flex-row-reverse p-3">
+                                <button class="btn buttons rounded-buttons ml-3 add_a_btn" type="button" name="button" ind="1">
+                                    <div class="d-flex justify-content-center align-items-center">
+                                        <span class="material-icons md-14">add</span>
+                                    </div>
+                                </button>
+                                <button class="btn buttons rounded-buttons del_a_btn" type="button" name="button" ind="1">
+                                    <div class="d-flex justify-content-center align-items-center">
+                                        <span class="material-icons md-14">clear</span>
+                                    </div>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="question-add mt-3">
+                    <h3 class="text-center mb-3">#1 Question:</h3>
+                    <div class="answer-area">
+                        <div class="row a_area">
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text w45" id="q_addon">Q</span>
+                                </div>
+                                <input type="text" class="form-control" placeholder="Enter your question:" name="quest" aria-describedby="q_addon">
+                            </div>
+
+                            <div class="input-group mb-1">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text prep">A1</span>
+                                </div>
+                                <input type="text" class="form-control" placeholder="Enter answer:" name="answ" aria-describedby="a1_addon">
+                                <div class="input-group-append p-2 align-items-center">
+                                    <input class="m-0" type="checkbox" name="corr" value="" title="Correct?">
+                                </div>
+                            </div>
+                            <div class="input-group mb-1">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text prep">A2</span>
+                                </div>
+                                <input type="text" class="form-control" placeholder="Enter answer:" name="answ" aria-describedby="a2_addon">
+                                <div class="input-group-append p-2 align-items-center">
+                                    <input class="m-0" type="checkbox" name="corr" value="" title="Correct?">
+                                </div>
+                            </div>
+                            <div class="input-group mb-1">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text prep">A3</span>
+                                </div>
+                                <input type="text" class="form-control" placeholder="Enter answer:" name="answ" aria-describedby="a3_addon">
+                                <div class="input-group-append p-2 align-items-center">
+                                    <input class="m-0" type="checkbox" name="corr" value="" title="Correct?">
+                                </div>
+                            </div>
+                            <div class="input-group mb-1">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text prep">A4</span>
+                                </div>
+                                <input type="text" class="form-control" placeholder="Enter answer:" name="answ" aria-describedby="a4_addon">
+                                <div class="input-group-append p-2 align-items-center">
+                                    <input class="m-0" type="checkbox" name="corr" value="" title="Correct?">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-3 d-flex flex-row-reverse p-3">
+                            <button class="btn buttons rounded-buttons ml-3 add_a_btn" type="button" name="button" ind="1">
+                                <div class="d-flex justify-content-center align-items-center">
+                                    <span class="material-icons md-14">add</span>
+                                </div>
+                            </button>
+                            <button class="btn buttons rounded-buttons del_a_btn" type="button" name="button" ind="1">
+                                <div class="d-flex justify-content-center align-items-center">
+                                    <span class="material-icons md-14">clear</span>
+                                </div>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-4 justify-content-center">
+                <button class="btn buttons" type="button" name="button" id="question_add">Add new question</button>
+            </div>
+            <div class="row mt-4 justify-content-center">
+                <button class="btn buttons" type="button" name="button" id="send_quiz">JSON</button>
+            </div>
+    </div>
+</div>
+{% endblock %}

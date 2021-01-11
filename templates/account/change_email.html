@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    {{ block.super }} - Change password
+{% endblock %}
+
+
+{% block content %}
+<div class="content">
+    <div class="container my-5">
+        <div class="row justify-content-center align-items-center">
+            <form class="auth-form form-border" action="{% url 'change_email' %}" method="post">
+                {% csrf_token %}
+                <div class="form-title">
+                    <h3 class="">Change email</h3>
+                </div>
+                <div class="form-group">
+                    <label for="pwdInput">Enter current password:</label>
+                    <input type="password" class="form-control" name="password" id="pwdInput" placeholder="Current password">
+                </div>
+                <div class="form-group">
+                    <label for="pwdInput">Enter new email:</label>
+                    <input type="email" class="form-control" name="email" id="pwdInput" placeholder="New email">
+                </div>
+                {% if form.errors %}
+                    <div class="alert alert-danger pb-0" role="alert">
+                        {% for value in form.errors.values %}
+                            {{ value }}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                <div class="row justify-content-center">
+                    <button type="submit" class="btn buttons">Change</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

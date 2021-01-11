@@ -1,0 +1,19 @@
+<div class="text-center mb-5 px-2">
+    <h3>Quizz: {{ question.quiz.title }}</h3>
+</div>
+
+<div class="question-block">
+    <div class="question text-center py-5">
+            {{ question.text }}
+    </div>
+    <div class="row justify-content-around my-5">
+        {% for answ in question.answeroption_set.all %}
+            <a class="btn answer buttons" href="{% url 'check_answer' answ.id %}">
+                {{ answ.answer.text }}
+                {% if answ.correct %}
+                    *
+                {% endif %}
+            </a>
+        {% endfor %}
+    </div>
+</div>

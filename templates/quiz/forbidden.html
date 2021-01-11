@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    {{ block.super }} - {{ username }}'s results page
+{% endblock %}
+
+{% block content %}
+<div class="content">
+    <div class="container my-5">
+        <div class="row">
+            <div class="row w-100 justify-content-center alert alert-danger" role="alert">
+                    You don't have permission to access on this page.
+            </div>
+            <div class="row w-100 justify-content-center mt-2">
+                <a class="btn buttons" href="{% url 'profile' %}">Back</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

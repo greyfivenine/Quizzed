@@ -1,0 +1,30 @@
+{% load static %}
+{% load quiz_tags %}
+
+{% if popular_q %}
+    {% for quiz in popular_q %}
+        <div class="col-lg-3 col-md-6 col-sm-12">
+            <div class="card h-100">
+                <img class="card-img-top" src="{% if quiz.image %} {{ quiz.image.url }} {% else %} {% static 'img/q.jpeg' %} {% endif %}" alt="Card image cap">
+                <div class="card-body d-flex flex-column">
+                    <h5 class="card-title card-quiz-title">{{ quiz.title }}</h5>
+                    <p class="card-text text-muted card-quiz-text quiz-desc">{{ quiz.description }}</p>
+                    <span class="card-info">Questions: {{ quiz.question_set.count }}</span>
+                </div>
+                <div class="card-footer d-flex justify-content-around align-items-center likes">
+                    <div class="d-flex align-items-center">
+                        <a class="like-btn {% is_liked quiz request.user %}" href="#" qid="{{ quiz.id }}">
+                            <span class="material-icons-outlined pr-2 pt-1">thumb_up</span>
+                        </a>
+                        <span class="like_cnt">{{ quiz|likes }}</span>
+                    </div>
+                    <a class="btn btn-success px-4" href="{% url 'quiz_page' quiz.id %}">Play</a>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+{% else %}
+    <div class="row w-100 justify-content-center">
+        <p class="card-quiz-text">Empty :-(</p>
+    </div>
+{% endif %}

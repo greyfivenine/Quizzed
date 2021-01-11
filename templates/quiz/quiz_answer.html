@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load quiz_tags %}
+
+{% block title %}
+    {{ block.super }} - Quiz page
+{% endblock %}
+
+{% block content %}
+<div class="content">
+    <div class="container my-5">
+        <div class="back-link">
+            <a href="{% url 'quiz_list' %}">&lt;&lt;Back</a>
+        </div>
+        {% get_question_data request %}
+        </div>
+    </div>
+</div>
+{% endblock %}
